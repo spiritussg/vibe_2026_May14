@@ -3,34 +3,35 @@
 
 ## Overview
 
-This project is a simple web application that provides a set of useful tools. The initial feature is a Toto random number generator. The application features a "Neon Cosmic Console" space futuristic theme, supporting both Light (Day) and Dark (Night) versions, with Dark mode serving as the primary futuristic experience.
+This project is a simple web application that provides a set of useful tools. The initial feature is a Toto random number generator. The application features an "RSI Industrial HUD" space futuristic theme, inspired by Star Citizen and Squadron 42, supporting both Light (Showroom) and Dark (Flight HUD) versions.
 
 ## Current Features
 
-### Toto Random Number Generator
+### Toto Random Number Generator (MFD Interface)
 
-*   **Purpose:** To generate random numbers for the Toto lottery game.
-*   **Implementation:** A web component that generates and displays 6 unique random numbers between 1 and 49.
+*   **Purpose:** To generate random numbers for the Toto lottery game using a high-fidelity aerospace interface.
+*   **Implementation:** A Multi-Function Display (MFD) web component that simulates a UEE data retrieval sequence.
 *   **UI:**
-    *   A button to trigger the number generation with a "system scan" effect.
-    *   A display area for the generated numbers, styled as futuristic energy orbs or tech-balls.
+    *   An "EXECUTE_DATA_PULL" button that initiates a technical scanning sequence.
+    *   Results displayed as "Digital Data Blocks" with precision targeting brackets.
+    *   Static technical readouts for immersion (e.g., SENSOR_LINK, COMM_STATE).
 
-### Day and Night Theme (Space Futuristic)
+### Day and Night Theme (Aerospace HUD)
 
-*   **Purpose:** To provide a comfortable viewing experience in different lighting conditions with a strong aesthetic focus.
+*   **Purpose:** To provide a comfortable viewing experience in different operating environments (Space vs. Station).
 *   **Implementation:**
-    *   **Space Theme (Dark):** Deep space backgrounds, neon cyan/purple accents, and an animated starfield.
-    *   **Light Theme:** A cleaner, "White Space Station" look with subtle tech accents.
-    *   CSS Variables (Design Tokens) using `oklch` for maximum color vibrancy.
+    *   **Flight HUD (Dark):** Deep charcoal backgrounds, RSI Cyan accents, and digital grid overlays.
+    *   **Showroom Interface (Light):** Pristine white/silver surfaces with soft blue highlights, inspired by high-end aerospace showrooms.
+    *   CSS Variables using `oklch` for high-fidelity color reproduction.
     *   Persistence using `localStorage` and system preference detection.
 
 ## Development Plan
 
-### Current Task: Implement Space Futuristic Theme (Neon Cosmic Console)
+### Current Task: Implement RSI Industrial HUD Theme
 
 1.  **DONE** Create `blueprint.md` to document the project.
-2.  **DONE** Define "Neon Cosmic" theme variables in `style.css`.
-3.  **DONE** Implement a CSS-based animated starfield background in `style.css`.
-4.  **DONE** Update `index.html` to include futuristic typography ('Orbitron').
-5.  **DONE** Refactor `toto-generator` in `main.js` with futuristic "scanning" animations and neon glows.
-6.  **DONE** Update `theme-toggle` in `main.js` to align with the cosmic aesthetic.
+2.  **DONE** Define RSI-specific theme variables and grid patterns in `style.css`.
+3.  **DONE** Implement high-fidelity glassmorphism with "digital noise" in `style.css`.
+4.  **DONE** Update `index.html` with grid overlays and UEE-themed text.
+5.  **DONE** Redesign `toto-generator` as a technical MFD in `main.js`.
+6.  **DONE** Redesign `theme-toggle` as an industrial power/HUD switch in `main.js`.

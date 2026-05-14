@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lucky Toto Terminal | Cosmic HUD</title>
+  <title>RSI Terminal | UEE Flight HUD</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
@@ -11,15 +11,25 @@
 </head>
 <body>
   <div class="starfield"></div>
+  <div class="grid-overlay"></div>
   <header>
-    <h1>TOTO TERMINAL v1.0</h1>
+    <div class="header-content">
+      <span class="uee-logo">UEE</span>
+      <h1>TERMINAL_ID::RSI_642-MFD</h1>
+    </div>
     <theme-toggle></theme-toggle>
   </header>
   <main>
     <toto-generator></toto-generator>
   </main>
   <footer>
-    <p>LOGGED_IN::GEMINI_INTERFACE // [SECURITY_LEVEL: ALPHA]</p>
+    <div class="footer-readout">
+      <span>PROTOCOL::UEE_ALPHA_7</span>
+      <span class="spacer"></span>
+      <span>ENCRYPTION::ACTIVE</span>
+      <span class="spacer"></span>
+      <span>SYSTEM_TIME::[SYNCHRONIZED]</span>
+    </div>
   </footer>
   <script defer type="text/javascript" src="/main.js"></script>
 </body>

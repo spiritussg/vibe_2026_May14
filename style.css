@@ -3,36 +3,38 @@
 
 @layer base {
   :root {
-    /* Space Station Theme (Light) */
-    --bg-color: oklch(95% 0.02 240);
-    --text-color: oklch(25% 0.05 240);
-    --surface-color: oklch(98% 0.01 240 / 80%);
-    --primary-color: oklch(65% 0.15 250); /* Steel Blue */
-    --secondary-color: oklch(75% 0.1 200); /* Mint Tech */
-    --accent-color: oklch(60% 0.2 300); /* Tech Purple */
+    /* RSI Showroom (Light) */
+    --bg-color: oklch(98% 0.01 240);
+    --text-color: oklch(20% 0.05 240);
+    --surface-color: oklch(95% 0.02 240 / 85%);
+    --primary-color: oklch(70% 0.15 210); /* RSI Cyan (Bright) */
+    --secondary-color: oklch(60% 0.1 240); /* Industrial Blue */
+    --accent-color: oklch(75% 0.2 60); /* Warning Amber */
     --shadow-color: oklch(0% 0 0 / 10%);
-    --shadow-deep: 0 10px 30px -5px var(--shadow-color);
+    --grid-opacity: 0.05;
+    --border-glow: oklch(70% 0.15 210 / 30%);
     --transition-speed: 0.4s;
     --font-main: 'Rajdhani', sans-serif;
     --font-display: 'Orbitron', sans-serif;
   }
 
   [data-theme="dark"] {
-    /* Neon Cosmic Theme (Dark) */
-    --bg-color: oklch(10% 0.05 250); /* Deep Space */
-    --text-color: oklch(90% 0.05 190); /* Neon Cyan Text */
-    --surface-color: oklch(15% 0.08 250 / 70%); /* Translucent Hull */
-    --primary-color: oklch(80% 0.2 190); /* Neon Cyan */
-    --primary-hover: oklch(85% 0.2 190);
-    --secondary-color: oklch(70% 0.2 300); /* Electric Purple */
-    --accent-color: oklch(90% 0.1 100); /* Solar Gold */
-    --shadow-color: oklch(0% 0 0 / 80%);
-    --shadow-deep: 0 0 30px oklch(80% 0.2 190 / 20%);
+    /* RSI Flight HUD (Dark) */
+    --bg-color: oklch(12% 0.05 240); /* Industrial Charcoal */
+    --text-color: oklch(80% 0.15 210); /* RSI Cyan Readout */
+    --surface-color: oklch(15% 0.08 240 / 60%); /* Cockpit Glass */
+    --primary-color: oklch(75% 0.2 210); /* Neon RSI Cyan */
+    --primary-hover: oklch(85% 0.2 210);
+    --secondary-color: oklch(40% 0.1 240); /* Deep Industrial Blue */
+    --accent-color: oklch(70% 0.2 60); /* High-Vis Amber */
+    --shadow-color: oklch(0% 0 0 / 90%);
+    --grid-opacity: 0.15;
+    --border-glow: oklch(75% 0.2 210 / 50%);
   }
 
   html {
     color-scheme: light dark;
-    scroll-behavior: smooth;
+    background-color: var(--bg-color);
   }
 
   body {
@@ -45,44 +47,72 @@
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    position: relative;
     transition: background-color var(--transition-speed), color var(--transition-speed);
   }
 
-  /* Animated Starfield */
+  /* Star Citizen Background Elements */
   .starfield {
     position: fixed;
     top: 0;
     left: 0;
     width: 200%;
     height: 200%;
+    z-index: -2;
+    background: radial-gradient(1px 1px at 20% 30%, white 100%, transparent),
+                radial-gradient(1.5px 1.5px at 50% 50%, white 100%, transparent),
+                radial-gradient(1px 1px at 80% 70%, white 100%, transparent);
+    background-size: 600px 600px;
+    opacity: 0.2;
+    animation: drift 120s linear infinite;
+  }
+
+  .grid-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: -1;
-    background: 
-      radial-gradient(1px 1px at 25% 25%, white 100%, transparent),
-      radial-gradient(1.5px 1.5px at 50% 50%, white 100%, transparent),
-      radial-gradient(1px 1px at 75% 75%, white 100%, transparent),
-      radial-gradient(2px 2px at 15% 85%, white 100%, transparent),
-      radial-gradient(1.5px 1.5px at 85% 15%, white 100%, transparent);
-    background-size: 400px 400px;
-    opacity: 0.3;
-    animation: drift 100s linear infinite;
+    background-image: 
+      linear-gradient(var(--primary-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--primary-color) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: var(--grid-opacity);
+    pointer-events: none;
   }
 
   @keyframes drift {
     from { transform: translate(0, 0); }
-    to { transform: translate(-50%, -50%); }
+    to { transform: translate(-200px, -200px); }
   }
 
   header {
-    background-color: var(--surface-color);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    padding: 1rem 2rem;
+    background: linear-gradient(to bottom, var(--surface-color), transparent);
+    backdrop-filter: blur(10px) contrast(1.1);
+    -webkit-backdrop-filter: blur(10px) contrast(1.1);
+    padding: 1rem 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid oklch(80% 0.2 190 / 20%);
-    box-shadow: 0 4px 20px var(--shadow-color);
+    border-bottom: 1px solid var(--border-glow);
     z-index: 10;
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .uee-logo {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.5rem;
+    padding: 0.2rem 0.8rem;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    letter-spacing: 2px;
   }
 
   main {
@@ -95,42 +125,32 @@
     position: relative;
   }
 
-  /* Scanning Line Effect */
-  main::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      transparent 50%,
-      oklch(80% 0.2 190 / 5%) 50%,
-      transparent 51%
-    );
-    background-size: 100% 4px;
-    pointer-events: none;
-    z-index: 5;
+  footer {
+    padding: 1rem 3rem;
+    background: linear-gradient(to top, var(--surface-color), transparent);
+    border-top: 1px solid var(--border-glow);
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    color: var(--primary-color);
+    opacity: 0.8;
   }
 
-  footer {
-    padding: 1.5rem;
-    text-align: center;
-    font-family: var(--font-display);
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    opacity: 0.6;
-    background: var(--surface-color);
-    border-top: 1px solid oklch(80% 0.2 190 / 10%);
+  .footer-readout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
+
+  .spacer { flex: 1; }
 
   h1 {
     margin: 0;
     font-family: var(--font-display);
-    font-size: 1.2rem;
-    font-weight: 900;
-    letter-spacing: 3px;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
     color: var(--primary-color);
-    text-shadow: 0 0 10px oklch(80% 0.2 190 / 50%);
+    text-transform: uppercase;
   }
 }
