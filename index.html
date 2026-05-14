@@ -3,12 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
+  <title>Lucky Toto Terminal | Cosmic HUD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
   <link href='/style.css' rel='stylesheet'>
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
+  <div class="starfield"></div>
+  <header>
+    <h1>TOTO TERMINAL v1.0</h1>
+    <theme-toggle></theme-toggle>
+  </header>
+  <main>
+    <toto-generator></toto-generator>
+  </main>
+  <footer>
+    <p>LOGGED_IN::GEMINI_INTERFACE // [SECURITY_LEVEL: ALPHA]</p>
+  </footer>
   <script defer type="text/javascript" src="/main.js"></script>
 </body>
 </html>

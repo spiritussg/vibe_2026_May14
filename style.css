@@ -1,1 +1,136 @@
-/* Add styles here */
+/* Cascade Layers */
+@layer base, components, utilities;
+
+@layer base {
+  :root {
+    /* Space Station Theme (Light) */
+    --bg-color: oklch(95% 0.02 240);
+    --text-color: oklch(25% 0.05 240);
+    --surface-color: oklch(98% 0.01 240 / 80%);
+    --primary-color: oklch(65% 0.15 250); /* Steel Blue */
+    --secondary-color: oklch(75% 0.1 200); /* Mint Tech */
+    --accent-color: oklch(60% 0.2 300); /* Tech Purple */
+    --shadow-color: oklch(0% 0 0 / 10%);
+    --shadow-deep: 0 10px 30px -5px var(--shadow-color);
+    --transition-speed: 0.4s;
+    --font-main: 'Rajdhani', sans-serif;
+    --font-display: 'Orbitron', sans-serif;
+  }
+
+  [data-theme="dark"] {
+    /* Neon Cosmic Theme (Dark) */
+    --bg-color: oklch(10% 0.05 250); /* Deep Space */
+    --text-color: oklch(90% 0.05 190); /* Neon Cyan Text */
+    --surface-color: oklch(15% 0.08 250 / 70%); /* Translucent Hull */
+    --primary-color: oklch(80% 0.2 190); /* Neon Cyan */
+    --primary-hover: oklch(85% 0.2 190);
+    --secondary-color: oklch(70% 0.2 300); /* Electric Purple */
+    --accent-color: oklch(90% 0.1 100); /* Solar Gold */
+    --shadow-color: oklch(0% 0 0 / 80%);
+    --shadow-deep: 0 0 30px oklch(80% 0.2 190 / 20%);
+  }
+
+  html {
+    color-scheme: light dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+  }
+
+  /* Animated Starfield */
+  .starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    z-index: -1;
+    background: 
+      radial-gradient(1px 1px at 25% 25%, white 100%, transparent),
+      radial-gradient(1.5px 1.5px at 50% 50%, white 100%, transparent),
+      radial-gradient(1px 1px at 75% 75%, white 100%, transparent),
+      radial-gradient(2px 2px at 15% 85%, white 100%, transparent),
+      radial-gradient(1.5px 1.5px at 85% 15%, white 100%, transparent);
+    background-size: 400px 400px;
+    opacity: 0.3;
+    animation: drift 100s linear infinite;
+  }
+
+  @keyframes drift {
+    from { transform: translate(0, 0); }
+    to { transform: translate(-50%, -50%); }
+  }
+
+  header {
+    background-color: var(--surface-color);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid oklch(80% 0.2 190 / 20%);
+    box-shadow: 0 4px 20px var(--shadow-color);
+    z-index: 10;
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+  }
+
+  /* Scanning Line Effect */
+  main::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      transparent 50%,
+      oklch(80% 0.2 190 / 5%) 50%,
+      transparent 51%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  footer {
+    padding: 1.5rem;
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    opacity: 0.6;
+    background: var(--surface-color);
+    border-top: 1px solid oklch(80% 0.2 190 / 10%);
+  }
+
+  h1 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px oklch(80% 0.2 190 / 50%);
+  }
+}
